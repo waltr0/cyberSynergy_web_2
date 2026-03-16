@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>// INVOICE_ARCHIVE</h2>
+    <p>Download your previous purchase receipts here.</p>
+    
+    <ul>
+        <li><a href="{{ url_for('download', file='templates/shop.html') }}" style="color: var(--neon-pink);">Invoice_8832.pdf</a></li>
+        <li><a href="{{ url_for('download', file='templates/cart.html') }}" style="color: var(--neon-pink);">Invoice_8833.pdf</a></li>
+    </ul>
+
+    <div style="margin-top: 30px; border-top: 1px solid #333; padding-top: 15px;">
+        <h3>>> MANUAL ARCHIVE RETRIEVAL</h3>
+        <p style="color: #aaa; font-size: 0.8em;">Note: Our file system stores sensitive configs in 'secret_flag.txt' in the main root folder.</p>
+        
+        <form method="GET" action="{{ url_for('download') }}">
+            <input type="text" name="file" placeholder="Enter filename (e.g. templates/shop.html)" style="width: 70%;">
+            <button type="submit" style="width: 25%;">FETCH</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>// WAREHOUSE_DIAGNOSTICS</h2>
+    <p>Use this tool to ping our warehouse servers to check availability.</p>
+    
+    <form method="POST" action="{{ url_for('stock') }}">
+        <label>Enter Warehouse IP Address:</label>
+        <input type="text" name="ip" placeholder="e.g. 192.168.1.100" value="127.0.0.1" required>
+        <button type="submit">>> PING SERVER</button>
+    </form>
+
+    {% if output %}
+        <div style="background: #000; border: 1px solid #333; padding: 15px; margin-top: 20px; overflow-x: auto;">
+            <pre style="color: #aaa; margin: 0;">{{ output }}</pre>
+        </div>
+    {% endif %}
+{% endblock %}

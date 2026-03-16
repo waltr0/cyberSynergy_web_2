@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    <div style="background: rgba(255, 0, 0, 0.15); border: 1px solid red; padding: 15px; margin-bottom: 25px; text-align: center; animation: flashWarning 3s infinite;">
+        <h3 style="color: red; margin: 0; text-shadow: 0 0 10px red;">⚠️ WARNING: RESTRICTED ZONE ⚠️</h3>
+        <p style="margin: 5px 0 0 0; color: #ff8888; font-size: 0.9em;">Unauthorized access to Admin Tokens will result in immediate IP tracing.</p>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #aaa; margin-bottom: 20px; border-bottom: 1px dashed #333; padding-bottom: 10px;">
+        <span>ACTIVE USERS: 1,337</span>
+        <span>SERVER: DEEP_WEB_NODE_09</span>
+        <span>UPTIME: 99.99%</span>
+    </div>
+
+    <h2>// AVAILABLE_ASSETS</h2>
+    <p style="margin-bottom: 30px;">Select an item to add to your cart. Transactions are final.</p>
+
+    <style>
+        .product-card { 
+            border: 1px solid #444; padding: 20px; margin-bottom: 25px; 
+            background: rgba(0,0,0,0.6); border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        /* The Hover Glow Effect */
+        .product-card:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 25px rgba(255, 42, 157, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(20, 0, 20, 0.9);
+        }
+        .product-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+            background: var(--neon-cyan); transition: 0.3s;
+        }
+        .product-card:hover::before { background: var(--neon-pink); width: 8px; }
+        
+        .price { color: var(--neon-pink); font-size: 1.5em; font-weight: bold; margin: 10px 0 20px 0; text-shadow: 0 0 10px var(--neon-pink); }
+    </style>
+
+    <div class="product-card">
+        <h3 style="margin-top: 0;">Admin Access Token [Rarity: LEGENDARY]</h3>
+        <p style="color: #ddd;">A highly restricted 256-bit cryptographic token. Grants the bearer absolute system override privileges across all university mainframe nodes.</p>
+        <p class="price">$1,000,000.00</p>
+        
+        <form method="POST" action="{{ url_for('shop') }}">
+            <input type="hidden" name="item_name" value="Admin Access Token">
+            <input type="hidden" name="price" value="1000000"> 
+            <button type="submit" style="border-color: var(--neon-pink); color: var(--neon-pink);">>> ACQUIRE TOKEN</button>
+        </form>
+    </div>
+
+    <div class="product-card">
+        <h3 style="margin-top: 0; color: var(--neon-cyan); text-shadow: none;">Standard User Account [Rarity: COMMON]</h3>
+        <p style="color: #ddd;">Basic forum access. Allows you to post on the underground messaging boards. No administrative privileges included.</p>
+        <p class="price" style="color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan);">$10.00</p>
+        <form method="POST" action="{{ url_for('shop') }}">
+            <input type="hidden" name="item_name" value="Standard User Account">
+            <input type="hidden" name="price" value="10">
+            <button type="submit">>> PURCHASE ACCOUNT</button>
+        </form>
+    </div>
+
+    <style>
+        @keyframes flashWarning {
+            0% { background: rgba(255, 0, 0, 0.15); }
+            50% { background: rgba(255, 0, 0, 0.3); }
+            100% { background: rgba(255, 0, 0, 0.15); }
+        }
+    </style>
+{% endblock %}

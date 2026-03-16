@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>// YOUR_CART</h2>
+    
+    {% if flag %}
+        <div class="flag-box">
+            <h3>>> CHECKOUT SUCCESSFUL</h3>
+            <p>You tricked the billing logic! Market database breached.</p>
+            <p style="font-weight: bold; color: #fff;">{{ flag }}</p>
+        </div>
+    {% else %}
+        <div class="product-card">
+            <h3>Item: {{ item }}</h3>
+            <p class="price">Total Due: ${{ price }}</p>
+            
+            {% if error %}
+                <p style="color: red;">>> ERROR: {{ error }}</p>
+            {% endif %}
+            
+            <form method="POST" action="{{ url_for('cart') }}">
+                <button type="submit">>> INITIATE_CHECKOUT</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
